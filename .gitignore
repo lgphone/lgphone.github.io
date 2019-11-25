@@ -6,3 +6,5 @@ public/
 
 # node modules
 node_modules/
+
+.deploy_git/
