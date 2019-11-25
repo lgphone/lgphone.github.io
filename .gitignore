@@ -1,0 +1,8 @@
+# idea
+.idea/
+
+# public
+public/
+
+# node modules
+node_modules/
