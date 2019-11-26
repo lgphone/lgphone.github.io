@@ -177,6 +177,30 @@
 
 
 
+
+<div class="card">
+    <div class="card-content">
+        <h3 class="title is-5 has-text-weight-normal">评论</h3>
+        
+<div id="comment-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
+<script>
+    var gitalk = new Gitalk({
+        clientID: '3ccab55f1e0b5077ea15',
+        clientSecret: 'dbef2cf913f55af94d43b497837c404d04b30141',
+        id: '12db96a7aa1b1ce0d30ff576d9997c32',
+        repo: 'lgphone.github.io',
+        owner: 'lgphone',
+        admin: "lgphone",
+        createIssueManually: false,
+        distractionFreeMode: false
+    })
+    gitalk.render('comment-container')
+</script>
+
+    </div>
+</div>
 </div>
                 
 
