@@ -10,16 +10,16 @@
 <title>kubernetes 内部多个应用之间的通信方法 - Yang Site</title>
 
 
-    <meta name="description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？&amp;lt; !–more–&amp;gt;其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做">
+    <meta name="description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kubernetes 内部多个应用之间的通信方法">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;2019&#x2F;11&#x2F;27&#x2F;kubernetes-fu-wu-jian-tong-xin&#x2F;index.html">
 <meta property="og:site_name" content="Yang Site">
-<meta property="og:description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？&amp;lt; !–more–&amp;gt;其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做">
+<meta property="og:description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-27T03:53:26.684Z">
+<meta property="og:updated_time" content="2019-11-27T03:57:10.655Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;images&#x2F;og_image.png">
 
@@ -152,7 +152,9 @@
         </h1>
         <div class="content">
             <hr>
-<p>举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。<br>在k8s内部这两个服务是如何通信的呢？<br>&lt; !–more–&gt;<br>其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡</p>
+<p>举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。<br>在k8s内部这两个服务是如何通信的呢？</p>
+<a id="more"></a>
+<p>其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡</p>
 <p><em>下面我们基于python实战一下这两个服务的交互过程</em></p>
 <ul>
 <li>Harbor Registry domain: 192.168.1.113</li>
