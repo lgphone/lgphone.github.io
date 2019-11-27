@@ -10,16 +10,16 @@
 <title>kubernetes 内部多个应用之间的通信方法 - Yang Site</title>
 
 
-    <meta name="description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？ 其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡 下面我们基于pyth">
+    <meta name="description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？&amp;lt; !–more–&amp;gt;其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做">
 <meta name="keywords" content="kubernetes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="kubernetes 内部多个应用之间的通信方法">
 <meta property="og:url" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;2019&#x2F;11&#x2F;27&#x2F;kubernetes-fu-wu-jian-tong-xin&#x2F;index.html">
 <meta property="og:site_name" content="Yang Site">
-<meta property="og:description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？ 其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡 下面我们基于pyth">
+<meta property="og:description" content="举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。在k8s内部这两个服务是如何通信的呢？&amp;lt; !–more–&amp;gt;其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;images&#x2F;og_image.png">
-<meta property="og:updated_time" content="2019-11-27T03:16:44.694Z">
+<meta property="og:updated_time" content="2019-11-27T03:53:26.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;www.izhihu.me&#x2F;images&#x2F;og_image.png">
 
@@ -125,7 +125,7 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
 <div class="card">
     
     <div class="card-content article ">
@@ -138,7 +138,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    7 分钟 读完 (大约 980 个字)
+                    7 分钟 读完 (大约 981 个字)
                 </span>
                 
                 
@@ -152,8 +152,7 @@
         </h1>
         <div class="content">
             <hr>
-<p>举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。<br>在k8s内部这两个服务是如何通信的呢？</p>
-<p>其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡</p>
+<p>举例我们一共有两个项目，一个是资源库resource-api，一个是用户及权限user-api，在资源库中需要调用用户模块鉴别用户的信息。<br>在k8s内部这两个服务是如何通信的呢？<br>&lt; !–more–&gt;<br>其实基于k8s的service 就可以了，我们内部已经有了coredns 当我们在pod内部请求service的name的时候会自动解析到对应的service ip上，并通过service做负载均衡</p>
 <p><em>下面我们基于python实战一下这两个服务的交互过程</em></p>
 <ul>
 <li>Harbor Registry domain: 192.168.1.113</li>
@@ -371,7 +370,7 @@
     
         
 
-    <div class="card widget" id="toc">
+    <div class="card widget column-left is-sticky" id="toc">
         <div class="card-content">
             <div class="menu">
                 <h3 class="menu-label">
@@ -475,275 +474,14 @@
     </div>
 
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            链接
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://www.v2ex.com" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">V2ex</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.v2ex.com</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://juejin.im" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">掘金</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">juejin.im</span>
-                    </span>
-                </a>
-            </li>
-        
-            <li>
-                <a class="level is-mobile" href="https://www.google.com.hk" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">Google</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">www.google.com.hk</span>
-                    </span>
-                </a>
-            </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                分类
-            </h3>
-            <ul class="menu-list">
-            
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            标签云
-        </h3>
-        <a href="/tags/kubernetes/" style="font-size: 10px;">kubernetes</a>
-    </div>
-</div>
-    
     
         <div class="column-right-shadow is-hidden-widescreen ">
         
-            <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/11/27/kubernetes-fu-wu-jian-tong-xin/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="kubernetes 内部多个应用之间的通信方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T02:05:56.000Z">2019-11-27</time></div>
-                    <a href="/2019/11/27/kubernetes-fu-wu-jian-tong-xin/" class="title has-link-black-ter is-size-6 has-text-weight-normal">kubernetes 内部多个应用之间的通信方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/25/helloworld/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="helloworld">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T09:22:52.000Z">2019-11-25</time></div>
-                    <a href="/2019/11/25/helloworld/" class="title has-link-black-ter is-size-6 has-text-weight-normal">helloworld</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/kubernetes/">
-                        <span class="tag">kubernetes</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
         </div>
     
 </div>
 
                 
-
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
-        <div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            最新文章
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/11/27/kubernetes-fu-wu-jian-tong-xin/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="kubernetes 内部多个应用之间的通信方法">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-27T02:05:56.000Z">2019-11-27</time></div>
-                    <a href="/2019/11/27/kubernetes-fu-wu-jian-tong-xin/" class="title has-link-black-ter is-size-6 has-text-weight-normal">kubernetes 内部多个应用之间的通信方法</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/11/25/helloworld/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="helloworld">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-11-25T09:22:52.000Z">2019-11-25</time></div>
-                    <a href="/2019/11/25/helloworld/" class="title has-link-black-ter is-size-6 has-text-weight-normal">helloworld</a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            归档
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/11/">
-                <span class="level-start">
-                    <span class="level-item">十一月 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-    
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                标签
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/kubernetes/">
-                        <span class="tag">kubernetes</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
-
             </div>
         </div>
     </section>
